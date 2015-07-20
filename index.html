@@ -6,31 +6,44 @@
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   </head>
   <body>
+    <a href="#" class="load-tweets-button">Load More tweets</a>
+    <div class = "tweet-list"></div>
     <script>
-      <!--I would really like to not run my javascript right here.-->
+      //I would really like to not run my javascript right here.
       
-    
-      <!--The main Function-->
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
-
-        //Variable declarations
-        var initialRun = true;
+      //A function to display tweets so I can call it on a timer.
+      function displayTheTweets(){
+        //Variable Declarations
+        var $tweetList = $('.tweet-list');
         var index = streams.home.length - 1;
-        var lastTweetDisplayed = 0;
 
-        //Tweet loading loop.
-        while ((index >= 0 && initialRun == true) || (index > lastTweetDisplayed)){
+        //Clear the TweetList cause that's what the original code did but there's likely optimizations here.
+        $tweetList.html('');
+        while (index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="tweet"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          //$tweet.
+          $tweet.appendTo($tweetList);
           index -= 1;
         }
         initialRun = false;
         lastTweetDisplayed = streams.home.length-1;
+        //setTimeout(displayTheTweets.call(this), 3000);
+      }
+      
+      /*function styleTweet(user, message, createdAt){
+        var returnValue = 
 
+      }*/
+      
+
+      //The main Function
+      $(document).ready(function(){
+        $('.load-tweets-button').on('click', displayTheTweets);
+        displayTheTweets();
+        //setInterval(displayTheTweets, 3000);
+        
       });
 
     </script>
