@@ -3,22 +3,33 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   </head>
   <body>
     <script>
-
+      <!--I would really like to not run my javascript right here.-->
+      
+    
+      <!--The main Function-->
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
 
+        //Variable declarations
+        var initialRun = true;
         var index = streams.home.length - 1;
-        while(index >= 0){
+        var lastTweetDisplayed = 0;
+
+        //Tweet loading loop.
+        while ((index >= 0 && initialRun == true) || (index > lastTweetDisplayed)){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }
+        initialRun = false;
+        lastTweetDisplayed = streams.home.length-1;
 
       });
 
