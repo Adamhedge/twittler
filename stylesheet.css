@@ -25,21 +25,56 @@ body{
   text-align: left;
   min-height: 49px;
   max-height: 100px;
-  background-color: #F9FBFF;
+  background-color: white;
   padding-bottom: 10px;
   padding-left: 5px;
   padding-top: 3px;
-  font:"HelveticaNeue-Light";
+  font-family:'HelveticaNeue-Light';
 
 }
 
 #load-tweets-button{
+	float:right;
+	padding-top:4px;
+	color:#807cA6;
+	padding-right: 20px;
+	text-decoration: none;
+	font-size:22px;
+}
 
+#load-tweets-button:hover{
+	text-decoration: underline;
+}
+
+#title-link{
+	text-decoration: none;
+	color:#807cA6;
+}
+
+#title-link:hover{
+	text-decoration: underline;	
+	color:#807cA6;
+}
+#goto-profile-button{
+	text-decoration: none;
+}
+#goto-profile-button:hover{
+	text-decoration: underline;
+}
+
+#user-link{
+	text-decoration: none;
+	color:black;
+}
+
+#user-link:hover{
+	text-decoration: underline;
+	color:black;
 }
 
 #topBar{
 	height:35px;
-	font:"HelveticaNeue-Light";
+	font-family:"HelveticaNeue-Light";
 	font-size:25px;
 	position:fixed;
 	width:100%;
@@ -56,15 +91,20 @@ body{
 	vertical-align: center;
 }
 
+.hidden{
+	display:none;
+
+}
 #userName{
 	display:inline;
 	font-weight: bold;
+	font-size: 13px;
 
 }
 
 #tweetMessage{
 	padding-left:10px;
-	padding-top:2px;
+	padding-top:3px;
 	color:#4A4B4C;
 	font-size:18px;
 
@@ -77,6 +117,7 @@ body{
 	text-align: right;
 	padding-right: 10px;
 	float: right;
+	font-size:12px;
 
 }
 

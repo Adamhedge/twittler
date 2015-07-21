@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>twittler by morgzilla</title>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   </head>
   <body>
     <div id="topBar">
-      twittler by morgzilla
+      <a href="#" id="title-link">twittler by morgzilla</a>
       <a href="#" id="load-tweets-button">get more tweets </a>
     </div>
         
@@ -15,8 +16,15 @@
     <script>
       //I would really like to not run my javascript right here.
 
-      //A function to display tweets so I can call it on a timer.
-      function displayTheTweets(){
+      //Gets a proper timestamp
+      function makeTimeStamp(str){
+        var time = str.toLocaleTimeString();
+        var value = time.substring(0, time.length-6)+ " " + time.substring(time.length-2, time.length);        
+        return value;
+      }
+
+      //A function to display tweets so I can call on a link, a person's name and upon loading.
+      function displayTheTweets(name){
         //Variable Declarations
         var $tweetList = $('.tweet-list');
         var index = streams.home.length - 1;
@@ -25,25 +33,26 @@
         $tweetList.html('');
         while (index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div class="tweet"></div>');
-
-          $('<div id="userName">@' + tweet.user + '</div>').appendTo($tweet);
-          $('<div id="tweetDate">' + tweet.created_at + '</div>').appendTo($tweet);
+          var $tweet = $('<div class="tweet" id="' +tweet.user+'"></div>');
+          $('<div id="userName"><a href="#" id="user-link" data-name="'+ tweet.user +'">@' + tweet.user + '</a></div>').appendTo($tweet);
+          $('<div id="tweetDate">' + makeTimeStamp(tweet.created_at) + '</div>').appendTo($tweet);
           $('<div id="tweetMessage">' + tweet.message + '</div>').appendTo($tweet);
-          //text('<p id="userName">' + tweet.user + '</p>' + 
-          //            '<p id="tweetMessage">' + tweet.message + '</p>' +
-          //            '<p id="tweetDate">' + tweet.createdAt + '<p>');
-          //$tweet.
-          $tweet.appendTo($tweetList);
+          if(arguments.length > 0){
+            if(tweet.user == name)
+              $tweet.appendTo($tweetList);    
+          }
+          else $tweet.appendTo($tweetList);
           index -= 1;
         }
-        initialRun = false;
-        lastTweetDisplayed = streams.home.length-1;
       }
   
       //The main Function
       $(document).ready(function(){
-        $('#load-tweets-button').on('click', displayTheTweets); 
+        $('#load-tweets-button').on('click', function(){displayTheTweets();}); 
+        $('#title-link').on('click', function(){displayTheTweets();});
+        $('div').on('click', '#user-link', function(){
+          console.log($(this).data('name'));
+          displayTheTweets($(this).data('name'));});
         displayTheTweets();
       });
 
