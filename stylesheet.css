@@ -1,0 +1,82 @@
+body{
+	margin-left: 0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin:0px;
+	background-color: #BEB7F2;
+}
+
+
+.tweet-list{
+	margin-top:45px;
+	min-width:250px;
+	max-width:500px;
+
+}
+
+.tweet:hover{
+	background-color:#F2EFFF;
+}
+.tweet{
+  margin-left: 5px;
+  margin-right:5px;
+  margin-top: 3px;
+  position: relative;
+  text-align: left;
+  min-height: 49px;
+  max-height: 100px;
+  background-color: #F9FBFF;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-top: 3px;
+  font:"HelveticaNeue-Light";
+
+}
+
+#load-tweets-button{
+
+}
+
+#topBar{
+	height:35px;
+	font:"HelveticaNeue-Light";
+	font-size:25px;
+	position:fixed;
+	width:100%;
+	z-index: 2;
+	font-weight:bold;
+	margin-left:0px;
+	margin-right: 0px;
+	margin-top:0px;	
+	margin:0px;
+	top:0;
+	padding-left: 5px;
+	color:#807CA6;
+	background-color: white;
+	vertical-align: center;
+}
+
+#userName{
+	display:inline;
+	font-weight: bold;
+
+}
+
+#tweetMessage{
+	padding-left:10px;
+	padding-top:2px;
+	color:#4A4B4C;
+	font-size:18px;
+
+
+}
+
+#tweetDate{
+	position: relative;
+	display: inline;
+	text-align: right;
+	padding-right: 10px;
+	float: right;
+
+}
+

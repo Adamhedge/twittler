@@ -6,11 +6,15 @@
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   </head>
   <body>
-    <a href="#" class="load-tweets-button">Load More tweets</a>
-    <div class = "tweet-list"></div>
+    <div id="topBar">
+      twittler by morgzilla
+      <a href="#" id="load-tweets-button">get more tweets </a>
+    </div>
+        
+    <center><div class = "tweet-list"></div></center>
     <script>
       //I would really like to not run my javascript right here.
-      
+
       //A function to display tweets so I can call it on a timer.
       function displayTheTweets(){
         //Variable Declarations
@@ -22,9 +26,10 @@
         while (index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet"></div>');
+
           $('<div id="userName">@' + tweet.user + '</div>').appendTo($tweet);
-          $('<div id="tweetMessage">' + tweet.message + '</div>').appendTo($tweet);
           $('<div id="tweetDate">' + tweet.created_at + '</div>').appendTo($tweet);
+          $('<div id="tweetMessage">' + tweet.message + '</div>').appendTo($tweet);
           //text('<p id="userName">' + tweet.user + '</p>' + 
           //            '<p id="tweetMessage">' + tweet.message + '</p>' +
           //            '<p id="tweetDate">' + tweet.createdAt + '<p>');
@@ -35,19 +40,11 @@
         initialRun = false;
         lastTweetDisplayed = streams.home.length-1;
       }
-      
-      /*function styleTweet(user, message, createdAt){
-        var returnValue = 
-
-      }*/
-      
-
+  
       //The main Function
       $(document).ready(function(){
-        $('.load-tweets-button').on('click', displayTheTweets);
+        $('#load-tweets-button').on('click', displayTheTweets); 
         displayTheTweets();
-        //setInterval(displayTheTweets, 3000);
-        
       });
 
     </script>
